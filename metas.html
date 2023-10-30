@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HEALTHY - Metas Personales</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Enlace a tu archivo CSS -->
+    <link rel="stylesheet" href="animate.css"> <!-- Enlace a la biblioteca de animaciones -->
+    <style>
+        /* Estilos para el formulario y la lista de metas */
+        .meta-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f7f7f7;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h2 {
+            color: #3498db;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-bottom: 10px; /* Añadimos margen inferior para separar el campo de texto del botón */
+        }
+
+        .meta-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .meta-list li {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin: 10px 0;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .meta-list li.completed {
+            background-color: #d4edda;
+        }
+
+        .meta-options {
+            display: flex;
+            gap: 10px;
+        }
+
+        .meta-options button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .meta-options .in-progress {
+            background-color: #3498db;
+            color: #fff;
+        }
+
+        .meta-options .completed {
+            background-color: #2ecc71;
+            color: #fff;
+        }
+
+        /* Estilos para el footer */
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #3498db;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado de la página -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="HTML\index.html">Inicio</a></li>
+                <li><a href="HTML\perfil.html">Mi Perfil</a></li>
+                <li><a href="HTML\progreso.html">Progreso Personal</a></li>
+                <li><a href="HTML\recursos.html">Recursos</a></li>
+                <li><a href="HTML\comunidad.html">Comunidad</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Contenido principal (Metas Personales) -->
+    <main class="main-content">
+        <div class="meta-section animated fadeIn">
+            <h2>Metas Personales</h2>
+            <p>Establece y realiza un seguimiento de tus metas personales para mejorar tu bienestar emocional.</p>
+
+            <!-- Formulario para agregar metas -->
+            <form id="meta-form">
+                <label for="meta">Nueva Meta:</label>
+                <input type="text" id="meta" placeholder="Ejemplo: Practicar la meditación diariamente" required>
+                <button class="btn-primary" type="submit">Agregar Meta</button>
+            </form>
+
+            <!-- Lista de metas -->
+            <ul class="meta-list" id="meta-list">
+                <!-- Las metas agregadas se mostrarán aquí -->
+            </ul>
+        </div>
+    </main>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2023 HEALTHY - Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const metaForm = document.getElementById("meta-form");
+            const metaInput = document.getElementById("meta");
+            const metaList = document.getElementById("meta-list");
+
+            metaForm.addEventListener("submit", function (e) {
+                e.preventDefault();
+
+                const nuevaMeta = metaInput.value;
+
+                if (nuevaMeta.trim() !== "") {
+                    // Crear un nuevo elemento de lista para la meta
+                    const nuevoElementoLista = document.createElement("li");
+                    nuevoElementoLista.innerHTML = `
+                        <span>${nuevaMeta}</span>
+                        <div class="meta-options">
+                            <button class="in-progress">En Curso</button>
+                            <button class="completed">Cumplida</button>
+                        </div>
+                    `;
+
+                    metaList.appendChild(nuevoElementoLista);
+                    metaInput.value = "";  // Limpiar el campo de entrada
+
+                    // Agregar eventos para marcar como en curso o cumplida
+                    const inProgressButton = nuevoElementoLista.querySelector(".in-progress");
+                    inProgressButton.addEventListener("click", function () {
+                        nuevoElementoLista.classList.remove("completed");
+                    });
+
+                    const completedButton = nuevoElementoLista.querySelector(".completed");
+                    completedButton.addEventListener("click", function () {
+                        nuevoElementoLista.classList.add("completed");
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

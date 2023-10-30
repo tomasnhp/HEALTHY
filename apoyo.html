@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apoyo de Salud Mental</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;1,100;1,200&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300&display=swap" rel="stylesheet">
+
+    <style>
+        /* Estilos generales */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            
+            background-color: #f7f7f7;
+        }
+
+        
+
+        /* Estilos para el contenido principal */
+        main {
+            flex: 1;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #3498db;
+            font-size: 28px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        p {
+            color: #333;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        /* Estilos para las secciones de recursos y artículos */
+        .resources, .articles, .contact-form {
+            background-color: #f7f7f7;
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .resources h2, .articles h2, .contact-form h2 {
+            color: #3498db;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .resources ul, .articles ul {
+            padding: 0;
+            list-style: none;
+        }
+
+        .resources ul li, .articles ul li {
+            margin: 10px 0;
+        }
+
+        .resources ul li a, .articles ul li a {
+            text-decoration: none;
+            color: #3498db;
+            font-weight: bold;
+        }
+
+        /* Estilos para el formulario de contacto */
+        .contact-form form {
+            text-align: left;
+        }
+
+        .contact-form label {
+            display: block;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 5px;
+            font-size: 16px;
+        }
+
+        .contact-form button {
+            padding: 10px 20px;
+            background-color: #3498db;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        /* Estilos para el chatbox */
+        .chatbox-container {
+            background-color: #fff;
+            color: #333;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 300px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            animation: fadeInRight 0.5s;
+        }
+
+        .chatbox-header {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+
+        .chatbox-title {
+            font-weight: bold;
+        }
+
+        .chatbox-toggle {
+            cursor: pointer;
+            font-size: 20px;
+            padding: 0 10px;
+        }
+
+        .chatbox-body {
+            max-height: 200px;
+            overflow-y: auto;
+            padding: 10px;
+        }
+
+        .message {
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .chatbot-message {
+            background-color: #3498db;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        .user-message {
+            background-color: #2676b2;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        .chatbox-input {
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #user-input {
+            width: 80%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* Animaciones */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInRight {
+            0% {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        /* Estilos para el chatbox */
+.chatbox-container {
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 10px; /* Mayor radio para hacerlo más grande */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 400px; /* Mayor ancho */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    animation: fadeInRight 0.5s;
+}
+
+.chatbox-header {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    cursor: pointer; /* Cambiado para indicar que es plegable */
+}
+
+.chatbox-title {
+    font-weight: bold;
+}
+
+.chatbox-toggle {
+    font-size: 20px;
+    padding: 0 10px;
+}
+
+.chatbox-body {
+    max-height: 300px; /* Mayor altura para mostrar más mensajes sin desplazamiento */
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.message {
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    word-wrap: break-word; /* Para que los mensajes largos se envuelvan */
+}
+
+.chatbot-message {
+    background-color: #3498db;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.user-message {
+    background-color: #2676b2;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.chatbox-input {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#user-input {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+/* Estilos para el botón de expandir/colapsar */
+.chatbox-toggle {
+    font-size: 20px;
+    padding: 0 10px;
+    cursor: pointer;
+}
+
+/* Estilos para el chatbox cuando está colapsado */
+.chatbox-container.collapsed {
+    width: 40px; /* Ancho mínimo cuando está colapsado */
+}
+
+.chatbox-container.collapsed .chatbox-body {
+    display: none; /* Oculta el cuerpo del chatbox cuando está colapsado */
+}
+
+.chatbox-container.collapsed .chatbox-toggle {
+    transform: rotate(-90deg); /* Cambia el ícono del botón al estar colapsado */
+}
+
+.chatbox-container.collapsed .chatbox-header {
+    cursor: pointer; /* Hace que el encabezado sea interactivo para expandir */
+}
+.chatbox-body {
+    max-height: 300px; /* Aumenta esta altura para que el chatbox sea más alto */
+    overflow-y: auto;
+    padding: 10px;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="perfil.html">Mi Perfil</a></li>
+                <li><a href="progreso.html">Progreso Personal</a></li>
+                <li><a href="recursos.html">Recursos</a></li>
+                <li><a href="comunidad.html">Comunidad</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Apoyo de Salud Mental</h1>
+        <p>Encuentra recursos, artículos y apoyo para mejorar tu salud mental. Si tienes alguna pregunta, ¡no dudes en preguntar a nuestro chatbot de apoyo!</p>
+
+        <div class="resources" id="resources">
+            <h2>Recursos de Salud Mental</h2>
+            <ul>
+                <li><a href="#"><i class="fas fa-book"></i> Artículos sobre salud mental</a></li>
+                <li><a href="#"><i class="fas fa-heart"></i> Consejos para el bienestar emocional</a></li>
+                <li><a href="#"><i class="fas fa-relax"></i> Ejercicios de relajación</a></li>
+                <li><a href="#"><i class="fas fa-phone-alt"></i> Líneas de ayuda y apoyo</a></li>
+            </ul>
+        </div>
+
+        <div class="articles" id="articles">
+            <h2>Artículos sobre Salud Mental</h2>
+            <ul>
+                <li><a href="#"><i class="fas fa-lightbulb"></i> Cómo manejar el estrés diario</a></li>
+                <li><a href="#"><i class="fas fa-info-circle"></i> La importancia de la salud mental</a></li>
+                <li><a href="#"><i class="fas fa-smile"></i> Consejos para mejorar tu bienestar emocional</a></li>
+                <li><a href="#"><i class="fas fa-head-side-cough"></i> Cómo afrontar la ansiedad</a></li>
+            </ul>
+        </div>
+
+        <div class="chatbox-container" id="chatbox-container">
+            <div class="chatbox-header">
+                <div class="chatbox-header" onclick="toggleChatbox()">
+                    <div class="chatbox-title">Habla con nuestro Chatbot de Apoyo</div>
+                    <div class="chatbox-toggle" id="chatbox-toggle">+</div>
+                </div>
+                
+            </div>
+            <div class="chatbox-body" id="chatbox-body">
+                <!-- El chatbot mostrará los mensajes aquí -->
+                <div class="message chatbot-message" id="chatbot-message">
+                    ¡Hola! Soy el Chatbot de Apoyo. ¿En qué puedo ayudarte hoy?
+                </div>
+            </div>
+            <div class="chatbox-input" id="chatbox-input">
+                <input type="text" id="user-input" placeholder="Escribe un mensaje..." onkeypress="enviarMensaje(event)">
+            </div>
+        </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 HEALTHY - Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="chatbot.js"></script>
+</body>
+</html>

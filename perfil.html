@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HEALTHY - Progreso Personal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="animate.css">
+    <link rel="stylesheet" href="gsap.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;1,100;1,200&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+<script src="{{ url_for('static', filename='scripts.js') }}"></script>
+
+    <style>
+        /* Estilos para el botón "Editar Perfil" */
+.btn-editar {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none; /* Quitamos el subrayado */
+    display: inline-block; /* Hacemos que sea un elemento en línea para controlar el ancho */
+}
+
+.btn-editar:hover {
+    background-color: #2e86de;
+}
+
+    </style>
+</head>
+<body>
+    <!-- Encabezado de la página -->
+    <header>
+        
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="apoyo.html">Apoyo Personalizdo</a></li>
+                    <li><a href="progreso.html">Progreso Personal</a></li>
+                    <li><a href="recursos.html">Recursos</a></li>
+                    <li><a href="comunidad.html">Comunidad</a></li>
+                </ul>
+            </nav>
+            
+        
+        
+    </header>
+
+    <!-- Contenido principal (Mi Perfil y Progreso Personal) -->
+    <main>
+        <h1 class="animated custom-animation">Mi Perfil</h1>
+
+        <div class="perfil" id="perfil">
+            <img class="foto_perfil" src="sdadsadsadsa.jpg" alt="Mi Foto de Perfil">
+            <h2>Nombre: Juan Pérez</h2>
+            <p>Edad: 30 años</p>
+            <p>Correo Electrónico: juan@email.com</p>
+            <p>Género: Masculino</p>
+            <a class="btn-editar" href="editar_perfil.html">Editar Perfil</a>
+        </div>
+
+        <section class="section animated fadeIn">
+            <h2>Tu Progreso</h2>
+            <p>Visualiza tu progreso a lo largo del tiempo y sigue trabajando en mejorar tu bienestar emocional.</p>
+            <a class="btn-primary" href="progreso.html">Ver Gráficos de Progreso</a> <!-- Cambiamos la URL a "progreso.html" -->
+        </section>
+        >
+
+        <section class="section animated fadeIn">
+            <h2>Metas Personales</h2>
+            <p>Establece metas personales para tu salud emocional y realiza un seguimiento de tu progreso hacia ellas.</p>
+            <a class="btn-secondary" href="metas.html">Metas Personales</a>
+
+        </section>
+
+        <section class="section animated fadeIn">
+            <h2>Registro de Actividades</h2>
+            <p>Lleva un registro de tus actividades y emociones para una mejor comprensión de tu salud emocional.</p>
+            <a class="btn-secondary" href="actividades.html">Registrar Actividades</a>
+        </section>
+    </main>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2023 HEALTHY - Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const registroActividades = document.getElementById("registro-actividades");
+            const btnRegistrar = document.getElementById("btn-registrar");
+            const actividadesRegistradas = document.getElementById("actividades-registradas");
+
+            btnRegistrar.addEventListener("click", function () {
+                const actividad = registroActividades.value;
+                if (actividad.trim() === "") {
+                    alert("Por favor, ingresa una actividad.");
+                } else {
+                    const fecha = new Date();
+                    const actividadConFecha = `${actividad} (Registrada el: ${fecha.toLocaleString()})`;
+                    const li = document.createElement("li");
+                    li.textContent = actividadConFecha;
+                    actividadesRegistradas.appendChild(li);
+                    registroActividades.value = "";
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthApp - Gestión de Salud</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Enlace a tu archivo CSS -->
+    <link rel="stylesheet" href="animate.css"> <!-- Enlace a la biblioteca de animaciones -->
+    <link rel="stylesheet" href="gsap.css"> <!-- Enlace a la biblioteca GSAP CSS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script> <!-- Enlace a la biblioteca GSAP JavaScript -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;1,100;1,200&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilo para el botón "Iniciar Sesión" en el header */
+        .header-navigation ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .header-navigation li {
+            margin-right: 20px;
+        }
+
+        .header-navigation .btn-secondary {
+            margin-right: 0;
+            margin-left: auto; /* Coloca el botón en el borde derecho del header */
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .header-navigation .btn-secondary:hover {
+            background-color: #2e86de;
+        }
+    </style>
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</head>
+<body>
+    <!-- Encabezado de la página -->
+    <header>
+        <nav>
+            <ul class="main-navigation header-navigation">
+                <li><a href="index_principal.html">Inicio</a></li>
+                <li><a href="historial_medico.html">Historial Médico</a></li>
+                <li><a href="graficos-salud.html">Gráficos de Salud</a></li>
+                <li><a href="informes.html">Informes</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="index.html" class="btn-secondary">Salir</a> <!-- Botón "Iniciar Sesión" -->
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+        <h1 class="animated custom-animation">Bienvenido a Healthy</h1>
+        <p class="animated fadeIn delay-1s">Tu herramienta para la gestión de historiales médicos y seguimiento de salud.</p>
+     </main>
+
+    <!-- Sección: Historial Médico -->
+    <section class="section salud-mental animated fadeInUp">
+        <div class="content">
+            <h2>Historial Médico</h2>
+            <p>Gestiona los historiales médicos de tus pacientes de manera segura y eficiente. Registra diagnósticos, tratamientos y seguimiento de la salud de tus pacientes.</p>
+            <a class="btn-secondary" href="ver_historiales.html">Ver Historiales</a>
+        </div>
+    </section>
+
+    <!-- Sección: Gráficos de Salud -->
+    <section class="section apoyo-personalizado animated fadeInUp">
+        <div class="content">
+            <h2>Gráficos de Salud</h2>
+            <p>Visualiza el progreso de tus pacientes a través de gráficos detallados. Comprende mejor su evolución y toma decisiones informadas.</p>
+            <a class="btn-secondary" href="graficos-salud.html">Ver Gráficos</a>
+        </div>
+    </section>
+
+    <!-- Sección: Informes y Análisis -->
+    <section class="section seguimiento animated fadeInUp">
+        <div class "content">
+            <h2>Informes y Análisis</h2>
+            <p>Genera informes detallados sobre la salud de tus pacientes. Realiza análisis en profundidad para ofrecer un cuidado médico de calidad.</p>
+            <a class="btn-secondary" href="informes.html">Ver Informes</a>
+        </div>
+    </section>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2023 HealthApp - Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="scripts.js"></script> <!-- Enlace al archivo JavaScript personalizado -->
+</body>
+</html>

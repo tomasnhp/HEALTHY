@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial Médico - HealthApp</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Enlace a tu archivo CSS -->
+    <link rel="stylesheet" href="animate.css"> <!-- Enlace a la biblioteca de animaciones -->
+    <link rel="stylesheet" href="gsap.css"> <!-- Enlace a la biblioteca GSAP CSS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script> <!-- Enlace a la biblioteca GSAP JavaScript -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;1,100;1,200&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+      * Estilos específicos para esta sección */
+    .search-bar {
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+        margin-right: 20px; /* Alinea la barra de búsqueda a la derecha y agrega espacio a la derecha */
+    }
+
+    .search-bar input[type="text"] {
+        padding: 10px;
+        border: 2px solid #3498db;
+        border-radius: 5px;
+        font-size: 16px;
+        font-family: 'Poppins', sans-serif; /* Fuente */
+    }
+
+    .search-bar button {
+        background-color: #3498db;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        margin-left: 10px;
+        font-weight: bold;
+        cursor: pointer;
+        font-family: 'Poppins', sans-serif; /* Fuente */
+    }
+
+    .search-bar button:hover {
+        background-color: #2e86de;
+    }
+       footer {
+            background-color: #3498db;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+</style>
+</head>
+<body>
+    <!-- Encabezado de la página -->
+    <header>
+        <nav>
+            <ul class="main-navigation header-navigation">
+                <li><a href="index_principal.html">Inicio</a></li>
+                <li><a href="historial-medico.html">Historial Médico</a></li>
+                <li><a href="graficos-salud.html">Gráficos de Salud</a></li>
+                <li><a href="informes.html">Informes</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li class="search-bar"> <!-- Mover este elemento al final de la barra de navegación -->
+                    <input type="text" placeholder="Buscar por DNI" id="search-input">
+                    <button id="search-button">Buscar</button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <!-- Contenido principal -->
+    <main class="main-content">
+        <!-- Contenido de la sección de historial médico -->
+        <h1 class="animated custom-animation">Historial Médico</h1>
+        <p class="animated fadeIn delay-1s">Gestiona los historiales médicos de tus pacientes de manera segura y eficiente. Registra diagnósticos, tratamientos y seguimiento de la salud de tus pacientes.</p>
+    </main>
+
+    <!-- Sección: Lista de Historiales Médicos -->
+    <section class="section salud-mental animated fadeInUp">
+        <div class="content">
+            <h2>Lista de Historiales Médicos</h2>
+            <p>Aquí encontrarás la lista de historiales médicos de tus pacientes. Puedes acceder a cada historial para ver y actualizar la información de salud de tus pacientes.</p>
+            <a class="btn-secondary" href="ver_historiales.html">Ver Historiales</a>
+        </div>
+    </section>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2023 HealthApp - Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="scripts.js"></script> <!-- Enlace al archivo JavaScript personalizado -->
+    <script src="busqueda_dni.js"></script>
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HEALTHY - Seguimiento a Largo Plazo</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Enlace a tu archivo CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Enlace a Chart.js -->
+    <link rel="stylesheet" href="animate.css"> <!-- Enlace a la biblioteca de animaciones -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;1,100;1,200&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+<script src="{{ url_for('static', filename='scripts.js') }}"></script>
+
+
+    <style>
+        /* Estilos para el contenido de la sección */
+        .seguimiento {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f7f7f7;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #3498db;
+            font-size: 24px;
+        }
+
+        h3 {
+            color: #333;
+            font-size: 18px;
+        }
+
+        /* Estilos para el gráfico */
+        #grafico-emocional {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Estilos para el registro de salud mental */
+        #registro-salud-mental {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        #fecha, #nivel-salud {
+            padding: 10px;
+            margin-right: 10px;
+        }
+
+        #fecha {
+            width: 150px;
+        }
+
+        #nivel-salud {
+            width: 50px;
+        }
+
+        #registro-button {
+            padding: 10px 20px;
+            background-color: #3498db;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        /* Estilos para el historial de registros */
+        #historial-registros {
+            margin-top: 20px;
+        }
+
+        #lista-registros {
+            list-style: none;
+            padding: 0;
+        }
+
+        #lista-registros li {
+            color: #333;
+            font-size: 16px;
+            margin: 5px 0;
+        }
+
+        /* Estilos para el footer */
+        .footer {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #3498db;
+            color: #fff;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado de la página -->
+    <header class="header">
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="perfil.html">Mi Perfil</a></li>
+                <li><a href="progreso.html">Progreso Personal</a></li>
+                <li><a href="recursos.html">Recursos</a></li>
+                <li><a href="comunidad.html">Comunidad</a></li>
+                <li><a href="seguimiento.html">Seguimiento a Largo Plazo</a></li> <!-- Agregado el enlace a la sección de seguimiento -->
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Seguimiento a Largo Plazo -->
+    <section class="seguimiento animated fadeInLeft">
+        <h2>Seguimiento a Largo Plazo</h2>
+        <h3>Progreso Emocional a lo Largo del Tiempo</h3>
+        <canvas id="grafico-emocional"></canvas> <!-- Elemento canvas para el gráfico -->
+    </section>
+
+    <!-- Registro de Salud Mental -->
+    <div id="registro-salud-mental">
+        <h3>Registro de Salud Mental</h3>
+        <label for="fecha">Fecha:</label>
+        <input type="date" id="fecha" required>
+        <label for="nivel-salud">Nivel de Salud (1-10):</label>
+        <input type="number" id="nivel-salud" min="1" max="10" required>
+        <button id="registro-button">Registrar</button>
+    </div>
+
+    <!-- Historial de Registros -->
+    <div id="historial-registros">
+        <h3>Historial de Registros de Salud Mental</h3>
+        <ul id="lista-registros">
+            <!-- Aquí se mostrarán los registros -->
+        </ul>
+    </div>
+
+    <!-- Pie de página -->
+    <footer class="footer animated fadeIn">
+        <p>&copy; 2023 HEALTHY - Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        // Código JavaScript para gestionar los registros y el gráfico
+        document.addEventListener("DOMContentLoaded", function() {
+            const registroForm = document.getElementById("registro-salud-mental");
+            const listaRegistros = document.getElementById("lista-registros");
+            const graficoEmocional = document.getElementById("grafico-emocional").getContext("2d");
+
+            // Array para almacenar los registros
+            const registros = [];
+
+            // Inicializar el gráfico con datos vacíos
+            const grafico = new Chart(graficoEmocional, {
+                type: 'line',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        label: 'Nivel de Salud Mental',
+                        data: [],
+                        borderColor: 'rgba(52, 152, 219, 1)',
+                        borderWidth: 2,
+                        fill: false
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 10
+                        }
+                    }
+                }
+            });
+
+            registroForm.addEventListener("submit", function(e) {
+                e.preventDefault();
+
+                const fecha = document.getElementById("fecha").value;
+                const nivelSalud = parseInt(document.getElementById("nivel-salud").value);
+
+                if (nivelSalud < 1 || nivelSalud > 10) {
+                    alert("El nivel de salud debe estar entre 1 y 10.");
+                    return;
+                }
+
+                // Agregar el registro al array
+                registros.push({ fecha, nivelSalud });
+
+                // Limpiar los campos del formulario
+                registroForm.reset();
+
+                // Actualizar el gráfico
+                grafico.data.labels.push(fecha);
+                grafico.data.datasets[0].data.push(nivelSalud);
+                grafico.update();
+
+                // Mostrar el registro en el historial
+                const nuevoRegistro = document.createElement("li");
+                nuevoRegistro.textContent = `Fecha: ${fecha}, Nivel de Salud: ${nivelSalud}`;
+                listaRegistros.appendChild(nuevoRegistro);
+            });
+        });
+    </script>
+</body>
+</html>

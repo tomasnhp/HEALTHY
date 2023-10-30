@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HEALTHY - Recursos</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Enlace a tu archivo CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;1,100;1,200&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="animate.css"> <!-- Enlace a tu archivo CSS de animaciones -->
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        #contenido-principal {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f7f7f7;
+            border-radius: 10px;
+        }
+
+        h1, h2 {
+            color: #3498db;
+        }
+
+        p {
+            color: #333;
+        }
+
+        /* Estilos para la barra de búsqueda */
+        .search-container {
+            margin-top: 20px;
+        }
+
+        #search-input {
+            padding: 10px;
+            width: 70%;
+            border: 2px solid #3498db;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        #search-button {
+            padding: 10px 20px;
+            background-color: #3498db;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        /* Estilos para las categorías de recursos */
+        .resource-category {
+            margin-top: 30px;
+        }
+
+        .resource-category h2 {
+            color: #3498db;
+            cursor: pointer; /* Cambia el cursor al hacer clic en el título */
+        }
+
+        .resource-list {
+            list-style: none;
+            padding: 0;
+            display: none; /* Inicialmente oculta la lista de recursos */
+        }
+
+        .resource-list li {
+            margin: 10px 0;
+        }
+
+        .resource-list a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #3498db;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado de la página -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="perfil.html">Mi Perfil</a></li>
+                <li><a href="progreso.html">Progreso Personal</a></li>
+                <li><a href="recursos.html">Recursos</a></li>
+                <li><a href="comunidad.html">Comunidad</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Contenido principal (Recursos) -->
+    <main id="contenido-principal">
+        <h1 class="animated custom-animation">Recursos para tu Bienestar Emocional</h1>
+        <p>Encuentra recursos útiles para mejorar tu salud mental y emocional.</p>
+
+        <!-- Barra de búsqueda -->
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Buscar recursos">
+            <button id="search-button">Buscar</button>
+        </div>
+
+        <!-- Lista de recursos -->
+        <div class="resources-container">
+            <!-- Categoría de recursos -->
+            <div class="resource-category">
+                <h2>Artículos sobre Salud Mental</h2>
+                <ul class="resource-list">
+                    <li><a href="#">Cómo gestionar el estrés en el trabajo</a></li>
+                    <li><a href="#">Consejos para mejorar la calidad del sueño</a></li>
+                    <li><a href="#">Mindfulness y sus beneficios</a></li>
+                    <!-- Agrega más enlaces a artículos -->
+                </ul>
+            </div>
+
+            <!-- Categoría de recursos -->
+            <div class="resource-category">
+                <h2>Técnicas de Relajación</h2>
+                <ul class="resource-list">
+                    <li><a href="#">Ejercicios de respiración para reducir la ansiedad</a></li>
+                    <li><a href="#">Meditación guiada para la relajación</a></li>
+                    <li><a href="#">Técnicas de visualización positiva</a></li>
+                    <!-- Agrega más enlaces a técnicas de relajación -->
+                </ul>
+            </div>
+
+            <!-- Categoría de recursos -->
+            <div class="resource-category">
+                <h2>Comunidades de Apoyo</h2>
+                <ul class="resource-list">
+                    <li><a href="#">Foro de apoyo para personas con ansiedad</a></li>
+                    <li><a href="#">Grupo de mindfulness en línea</a></li>
+                    <li><a href="#">Comunidad para compartir experiencias de superación</a></li>
+                    <!-- Agrega más enlaces a comunidades de apoyo -->
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2023 HEALTHY - Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const searchInput = document.getElementById("search-input");
+            const searchButton = document.getElementById("search-button");
+            const resourceCategories = document.querySelectorAll(".resource-category");
+
+            // Agregar eventos de clic para mostrar/ocultar la lista de recursos
+            resourceCategories.forEach(function (category) {
+                const categoryTitle = category.querySelector("h2");
+                const resourceList = category.querySelector(".resource-list");
+                categoryTitle.addEventListener("click", function () {
+                    resourceList.style.display = resourceList.style.display === "none" ? "block" : "none";
+                });
+            });
+
+            searchButton.addEventListener("click", function () {
+                searchResources();
+            });
+
+            searchInput.addEventListener("input", function () {
+                searchResources();
+            });
+
+            function searchResources() {
+                const searchTerm = searchInput.value.toLowerCase();
+
+                resourceCategories.forEach(function (category) {
+                    const categoryTitle = category.querySelector("h2");
+                    const resourceList = category.querySelector(".resource-list");
+                    const resourceLinks = resourceList.querySelectorAll("a");
+
+                    let categoryMatch = false;
+
+                    resourceLinks.forEach(function (link) {
+                        const resourceTitle = link.textContent.toLowerCase();
+                        if (resourceTitle.includes(searchTerm)) {
+                            link.style.display = "block";
+                            categoryMatch = true;
+                        } else {
+                            link.style.display = "none";
+                        }
+                    });
+
+                    if (categoryTitle.textContent.toLowerCase().includes(searchTerm) || categoryMatch) {
+                        resourceList.style.display = "block";
+                    } else {
+                        resourceList.style.display = "none";
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

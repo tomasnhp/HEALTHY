@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HEALTHY - Medición de Salud Mental</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Enlace a tu archivo CSS -->
+    <link rel="stylesheet" href="animate.css"> <!-- Enlace a la biblioteca de animaciones -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;1,100;1,200&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+    
+    <style>
+        /* Estilos para la página de Medición de Salud Mental */
+        .medicion-salud {
+            background-color: #f7f7f7;
+            border-radius: 10px;
+            padding: 40px;
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .medicion-salud h2 {
+            color: #3498db;
+            font-size: 24px;
+        }
+
+        .medicion-salud form {
+            margin-top: 20px;
+        }
+
+        .pregunta {
+            margin: 10px 0;
+            text-align: left;
+        }
+
+        .pregunta label {
+            display: block;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .pregunta input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #3498db;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .barra-salud {
+            width: 100%;
+            height: 14px;
+            background: #3498db;
+            border-radius: 10px;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nivel-salud {
+            height: 100%;
+            width: 0;
+            background: #ffbf00;
+            border-radius: 10px;
+            text-align: center;
+            line-height: 14px;
+            color: #fff;
+            font-weight: bold;
+            transition: width 2s ease;
+        }
+
+        .recomendaciones {
+            margin-top: 20px;
+            font-size: 18px;
+            text-align: center;
+            padding: 20px;
+            background: #3498db;
+            border-radius: 10px;
+            color: #fff;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado de la página -->
+    <header class="header">
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="perfil.html">Mi Perfil</a></li>
+                <li><a href="progreso.html">Progreso Personal</a></li>
+                <li><a href="recursos.html">Recursos</a></li>
+                <li><a href="comunidad.html">Comunidad</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Medición de la Salud Mental -->
+    <section class="medicion-salud animated fadeIn">
+        <h2>Medición de la Salud Mental</h2>
+        <form id="evaluacion-form" class="animated fadeIn">
+            <div class="pregunta">
+                <label for="pregunta1">¿Cómo te sientes hoy? (1-10)</label>
+                <input type="number" id="pregunta1" min="1" max="10" required>
+            </div>
+            <div class="pregunta">
+                <label for="pregunta2">¿Cómo estuvo tu calidad de sueño? (1-10)</label>
+                <input type="number" id="pregunta2" min="1" max="10" required>
+            </div>
+            <div class="pregunta">
+                <label for="pregunta3">¿Cuánto estrés has experimentado? (1-10)</label>
+                <input type="number" id="pregunta3" min="1" max="10" required>
+            </div>
+            
+            </div>
+            <div class="pregunta">
+                <label for="pregunta4">¿Te sientes motivado/a para el día? (1-10)</label>
+                <input type="number" id="pregunta4" min="1" max="10" required>
+            </div>
+            <div class="pregunta">
+                <label for="pregunta5">¿Has tenido dificultades para concentrarte? (1-10)</label>
+                <input type="number" id="pregunta5" min="1" max="10" required>
+            </div>
+            <div class="pregunta">
+                <label for="pregunta6">¿Cómo ha sido tu nivel de energía? (1-10)</label>
+                <input type="number" id="pregunta6" min="1" max="10" required>
+            </div>
+            <!-- Agrega más preguntas aquí -->
+            <button id="evaluar-btn" class="btn-primary animated fadeIn">Evaluar</button>
+        </form>
+        <div id="resultados" class="resultados animated fadeIn">
+            <h3 class="animated fadeIn">Tu Nivel de Salud Mental:</h3>
+            <div class="barra-salud animated fadeIn">
+                <div id="nivel-salud" class="nivel-salud animated slideInLeft">0</div>
+            </div>
+            <div id="recomendaciones" class="recomendaciones animated fadeIn"></div>
+        </div>
+    </section>
+
+    <!-- Pie de página -->
+    <footer class="footer animated fadeIn">
+        <p>&copy; 2023 HEALTHY - Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="evaluacion.js"></script> <!-- Enlace al archivo JavaScript -->
+</body>
+</html>

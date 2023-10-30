@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+    <!-- Bootstrap CSS (en el encabezado) -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;1,100;1,200&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+    
+    <style>
+        /* Estilos para la página de registro */
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0; /* Color de fondo */
+        }
+
+        .container {
+            max-width: 500px;
+            padding: 20px;
+            background-color: #fff; /* Color de fondo */
+            border-radius: 10px;
+            text-align: center;
+            animation: fadeIn 1s; /* Animación de entrada */
+        }
+
+        .registration-form h1 {
+            color: #3498db;
+            margin-top: 10px;
+            font-family: 'Montserrat', sans-serif; /* Fuente */
+        }
+
+        .form-group {
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            font-family: 'Poppins', sans-serif; /* Fuente */
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #3498db;
+            border-radius: 5px;
+            font-size: 16px;
+            font-family: 'Poppins', sans-serif; /* Fuente */
+        }
+
+        .registration-form button[type="submit"] {
+            padding: 12px 20px;
+            background-color: #3498db;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 18px;
+            font-family: 'Poppins', sans-serif; /* Fuente */
+            cursor: pointer;
+        }
+
+        /* Estilos para los mensajes de éxito y error */
+        #messages {
+            color: #fff;
+            font-weight: bold;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif; /* Fuente */
+        }
+
+        #messages.success {
+            background-color: #5cb85c; /* Color verde para éxito */
+        }
+
+        #messages.error {
+            background-color: #d9534f; /* Color rojo para error */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="registration-form" class="registration-form animated fadeIn">
+            <h1>Registro</h1>
+            <div class="form-group">
+                <label for="firstName">Nombre:</label>
+                <input type="text" id="firstName" name="firstName" required>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Apellido:</label>
+                <input type="text" id="lastName" name="lastName" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Correo electrónico:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Registrarse</button>
+        </form>
+        <div id="messages"></div>
+    </div>
+    <script src="registro.js"></script>
+</body>
+</html>

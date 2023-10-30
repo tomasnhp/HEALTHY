@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HEALTHY - Comunidad</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Enlace a tu archivo CSS -->
+    <link rel="stylesheet" href="animate.css"> <!-- Enlace a la biblioteca de animaciones -->
+    <link rel="stylesheet" href="gsap.css"> <!-- Enlace a la biblioteca GSAP CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;1,100;1,200&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Agrega tus estilos personalizados aquí */
+
+        /* Estilos para el contenido principal */
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f7f7f7;
+            border-radius: 10px;
+            animation: fadeIn 1s;
+        }
+
+        h1 {
+            color: #3498db;
+        }
+
+        p {
+            color: #333;
+        }
+
+        /* Estilos para el formulario de publicación */
+        .formulario-publicar {
+            margin-top: 20px;
+        }
+
+        .formulario-publicar h2 {
+            color: #3498db;
+        }
+
+        .formulario-publicar form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .formulario-publicar label {
+            font-weight: bold;
+        }
+
+        .formulario-publicar input,
+        .formulario-publicar textarea {
+            padding: 10px;
+            margin: 5px 0;
+            border: 2px solid #3498db;
+            border-radius: 5px;
+        }
+
+        .btn-publicar {
+            padding: 10px 20px;
+            background-color: #3498db;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        /* Estilos para el filtrado */
+        .filtrar {
+            margin-top: 20px;
+        }
+
+        .filtrar label {
+            color: #3498db;
+        }
+
+        .filtrar select {
+            padding: 5px;
+            border: 2px solid #3498db;
+            border-radius: 5px;
+        }
+
+        /* Estilos para las publicaciones de la comunidad */
+        .publicaciones {
+            margin-top: 20px;
+        }
+
+        /* Estilos para el contenedor del contenido principal y el footer */
+        #contenido-total {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Estilos para el footer */
+        footer {
+            margin-top: auto;
+            padding: 20px;
+            background-color: #3498db;
+            color: #fff;
+            text-align: center;
+        }
+
+        /* Clase para animación de entrada */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+             /* Estilos para la página de Comunidad */
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f7f7f7;
+            border-radius: 10px;
+            animation: fadeIn 1s; /* Animación de entrada */
+        }
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado de la página -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="perfil.html">Mi Perfil</a></li>
+                <li><a href="progreso.html">Progreso Personal</a></li>
+                <li><a href="recursos.html">Recursos</a></li>
+                <li><a href="comunidad.html">Comunidad</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Contenido principal (Comunidad) -->
+    <main class="animated">
+        <h1>Comunidad de Apoyo</h1>
+        <p>Conéctate con personas que comparten tus experiencias y bríndate apoyo mutuo.</p>
+
+        <!-- Formulario para Publicar -->
+        <div class="formulario-publicar animated">
+            <h2>Publica tu Experiencia</h2>
+            <form>
+                <label for="titulo">Título:</label>
+                <input type="text" id="titulo" name="titulo" required>
+
+                <label for="autor">Autor:</label>
+                <input type="text" id="autor" name="autor" required>
+
+                <label for="contenido">Contenido:</label>
+                <textarea id="contenido" name="contenido" required></textarea>
+
+                <button class="btn-publicar" type="submit">Publicar</button>
+            </form>
+        </div>
+
+        <!-- Filtrar por Más Relevantes (Me Gusta) -->
+        <div class="filtrar animated">
+            <label for="filtrar-relevancia">Filtrar por relevancia:</label>
+            <select id="filtrar-relevancia">
+                <option value="todos">Todos</option>
+                <option value="me-gusta">Más Gustados</option>
+            </select>
+        </div>
+
+        <!-- Publicaciones de la Comunidad -->
+        <div class="publicaciones animated" id="publicaciones">
+            <!-- Aquí se mostrarán las publicaciones -->
+        </div>
+    </main>
+
+    <div id="contenido-total">
+        <!-- Pie de página -->
+        <footer class="animated">
+            <p>&copy; 2023 HEALTHY - Todos los derechos reservados.</p>
+        </footer>
+    </div>
+
+    <script src="comunidad.js"></script> <!-- Enlace al archivo JavaScript personalizado -->
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HEALTHY - Editar Perfil</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Enlace a tu archivo CSS -->
+    <link rel="stylesheet" href="animate.css"> <!-- Enlace a la biblioteca de animaciones -->
+</head>
+<style>
+    /* Estilos para el formulario de edición de perfil */
+    .perfil-editar {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f7f7f7;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        color: #3498db;
+        font-size: 24px;
+    }
+
+    form {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-weight: bold;
+        display: block;
+        margin: 10px 0;
+    }
+
+    input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    button {
+        background-color: #3498db;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+
+    button:hover {
+        background-color: #2e86de;
+    }
+  
+</style>
+<body>
+    <!-- Encabezado de la página -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="perfil.html">Mi Perfil</a></li>
+                <li><a href="progreso.html">Progreso Personal</a></li>
+                <li><a href="recursos.html">Recursos</a></li>
+                <li><a href="comunidad.html">Comunidad</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Contenido principal (Editar Perfil) -->
+    <main>
+        <h1 class="animated custom-animation">Editar Perfil</h1>
+
+        <div class="perfil-editar" id="perfil-editar">
+            <h2>Editar tu Perfil</h2>
+            <form id="editar-perfil-form">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" placeholder="Tu Nombre">
+
+                <label for="edad">Edad:</label>
+                <input type="text" id="edad" placeholder="Tu Edad">
+
+                <label for="correo">Correo Electrónico:</label>
+                <input type="text" id="correo" placeholder="Tu Correo Electrónico">
+
+                <label for="genero">Género:</label>
+                <input type="text" id="genero" placeholder="Tu Género">
+
+                <button type="submit" class="btn-editar">Guardar Cambios</button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2023 HEALTHY - Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const editarPerfilForm = document.getElementById("editar-perfil-form");
+            const nombreInput = document.getElementById("nombre");
+            const edadInput = document.getElementById("edad");
+            const correoInput = document.getElementById("correo");
+            const generoInput = document.getElementById("genero");
+
+            // Agregar evento para guardar cambios
+            editarPerfilForm.addEventListener("submit", function (e) {
+                e.preventDefault();
+
+                // Obtener los valores de los campos
+                const nuevoNombre = nombreInput.value;
+                const nuevaEdad = edadInput.value;
+                const nuevoCorreo = correoInput.value;
+                const nuevoGenero = generoInput.value;
+
+                // Aquí puedes realizar la lógica para guardar los cambios en el perfil
+                // Puedes enviar los datos a un servidor o guardarlos localmente en JavaScript
+
+                // Ejemplo de mostrar una alerta con los nuevos datos (debes personalizarlo)
+                alert(`Cambios guardados:\nNombre: ${nuevoNombre}\nEdad: ${nuevaEdad}\nCorreo: ${nuevoCorreo}\nGénero: ${nuevoGenero}`);
+            });
+        });
+    </script>
+</body>
+</html>

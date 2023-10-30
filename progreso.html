@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HEALTHY - Progreso Personal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="animate.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;1,100;1,200&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300&display=swap" rel="stylesheet">
+
+ 
+        
+  
+</head>
+<body>
+    <!-- Encabezado de la página -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="perfil.html">Mi Perfil</a></li>
+                <li><a href="progreso.html">Progreso Personal</a></li>
+                <li><a href="recursos.html">Recursos</a></li>
+                <li><a href="comunidad.html">Comunidad</a></li>
+            </ul>
+    </header>
+
+    <!-- Contenido principal (Progreso Personal) -->
+    <main id="contenido-principal">
+        <h1 class="animated custom-animation">Progreso Personal</h1>
+        <p>Aquí puedes ingresar tus datos de salud día a día y ver tu progreso.</p>
+
+        <!-- Formulario para ingresar datos de salud -->
+        <form id="salud-form" class="animated fadeIn">
+            <div class="form-group">
+                <label for="fecha">Fecha:</label>
+                <input type="date" id="fecha" required>
+            </div>
+            <div class="form-group">
+                <label for="puntaje">Puntaje de Salud (0-10):</label>
+                <input type="number" id="puntaje" min="0" max="10" required>
+            </div>
+            <button type="submit">Ingresar Datos</button>
+        </form>
+
+        <!-- Gráfico de progreso -->
+        <div id="grafico-progreso">
+            <canvas id="grafico-progreso-canvas"></canvas>
+        </div>
+    </main>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2023 HEALTHY - Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const saludForm = document.getElementById("salud-form");
+            const graficoProgresoCanvas = document.getElementById("grafico-progreso-canvas");
+
+            // Función para agregar una entrada al gráfico
+            function agregarEntradaGrafico(fecha, puntaje) {
+                myChart.data.labels.push(fecha);
+                myChart.data.datasets[0].data.push(puntaje);
+                myChart.update();
+            }
+
+            // Inicializar el gráfico
+            const ctx = graficoProgresoCanvas.getContext('2d');
+            const myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: [], // Fechas
+                    datasets: [{
+                        label: 'Puntaje de Salud',
+                        data: [], // Puntajes
+                        backgroundColor: '#3498db',
+                        barPercentage: 0.5, // Ancho de las barras (50%)
+                    }]
+                },
+                options: {
+                    scales: {
+                        x: {
+                            display: false, // Ocultar etiquetas en el eje X
+                            beginAtZero: true,
+                            max: 10, // Valor máximo en el eje X
+                        },
+                        y: {
+                            beginAtZero: true,
+                            max: 10, // Valor máximo en el eje Y
+                        }
+                    }
+                }
+            });
+
+            saludForm.addEventListener("submit", function (event) {
+                event.preventDefault();
+
+                // Obtener los valores ingresados
+                const fecha = document.getElementById("fecha").value;
+                const puntaje = document.getElementById("puntaje").value;
+
+                // Validar los valores
+                if (fecha.trim() === "" || puntaje.trim() === "") {
+                    alert("Por favor, completa ambos campos.");
+                    return;
+                }
+
+                // Agregar la entrada al gráfico
+                agregarEntradaGrafico(fecha, puntaje);
+
+                // Limpiar el formulario
+                document.getElementById("fecha").value = "";
+                document.getElementById("puntaje").value = "";
+            });
+        });
+    </script>
+</body>
+</html>

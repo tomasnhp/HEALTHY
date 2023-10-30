@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HEALTHY - Registro de Actividades</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Enlace a tu archivo CSS -->
+    <link rel="stylesheet" href="animate.css"> <!-- Enlace a la biblioteca de animaciones -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;1,100;1,200&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300&display=swap" rel="stylesheet">
+
+    <style>
+        /* Estilos para el contenido de la sección */
+        .registro-actividades {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease;
+        }
+
+        h2 {
+            color: #3498db;
+            font-size: 28px;
+        }
+
+        p {
+            color: #333;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        /* Estilos para el formulario y la lista de actividades */
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #2e86de;
+        }
+
+       
+
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        /* Estilos para el footer */
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #3498db;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+
+        /* Animaciones */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado de la página -->
+    <header class="header">
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="perfil.html">Mi Perfil</a></li>
+                <li><a href="progreso.html">Progreso Personal</a></li>
+                <li><a href="recursos.html">Recursos</a></li>
+                <li><a href="comunidad.html">Comunidad</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Registro de Actividades -->
+    <section class="registro-actividades">
+        <h2 class="animated fadeIn">Registro de Actividades</h2>
+        <p class="animated fadeIn">Lleva un registro de tus actividades y emociones para una mejor comprensión de tu salud emocional.</p>
+
+        <!-- Formulario para agregar actividades -->
+        <form>
+            <label for="actividad">Nueva Actividad:</label>
+            <input type="text" id="actividad" placeholder="Ejemplo: Meditación de 10 minutos" required>
+            <button id="btn-registrar" class="animated fadeIn">Registrar Actividad</button>
+        </form>
+
+        <!-- Lista de actividades registradas -->
+        <ul id="actividades-registradas">
+            <!-- Las actividades registradas se mostrarán aquí -->
+        </ul>
+    </section>
+
+    <!-- Pie de página -->
+    <footer class="footer">
+        <p>&copy; 2023 HEALTHY - Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const registroActividades = document.getElementById("actividad");
+            const btnRegistrar = document.getElementById("btn-registrar");
+            const actividadesRegistradas = document.getElementById("actividades-registradas");
+
+            btnRegistrar.addEventListener("click", function () {
+                const actividad = registroActividades.value;
+                if (actividad.trim() === "") {
+                    alert("Por favor, ingresa una actividad.");
+                } else {
+                    const fecha = new Date();
+                    const actividadConFecha = `${actividad} (Registrada el: ${fecha.toLocaleString()})`;
+                    const li = document.createElement("li");
+                    li.innerHTML = `
+                        <input type="checkbox">
+                        <span>${actividadConFecha}</span>
+                    `;
+                    actividadesRegistradas.appendChild(li);
+                    registroActividades.value = "";
+                }
+            });
+        });
+    </script>
+</body>
+</html>

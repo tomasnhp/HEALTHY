@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthApp - Informes y Análisis</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script> <!-- Enlace a la biblioteca GSAP JavaScript -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;1,100;1,200&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilo para el botón de "Volver" */
+        .btn-secondary {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background-color: #2e86de;
+        }
+
+        /* Estilo para el contenido de la sección */
+        .section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 70vh;
+            background: linear-gradient(rgba(26, 117, 255, 0.7), rgba(23, 107, 228, 0.7)), url('background.jpg');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            padding: 20px;
+            margin: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .section h2 {
+            font-size: 36px;
+            margin: 0;
+            color: #fff;
+            animation: bounce 2s infinite; /* Animación de rebote */
+        }
+
+        .section p {
+            font-size: 18px;
+            margin: 20px 0;
+            color: #fff;
+        }
+
+        .animated {
+            animation: fadeIn 2s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Estilo para el botón */
+        .btn-secondary {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            animation: pulse 2s infinite; /* Animación de pulso */
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Contenido de la sección "Informes y Análisis" -->
+    <section class="section animated">
+        <h2>Informes y Análisis</h2>
+        <p>Genera informes detallados sobre la salud de tus pacientes. Realiza análisis en profundidad para ofrecer un cuidado médico de calidad.</p>
+        <a class="btn-secondary" href="ver_informes.html">Ver Informes</a>
+    </section>
+</body>
+</html>

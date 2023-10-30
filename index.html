@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthApp - Gestión de Salud</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Enlace a tu archivo CSS -->
+    <link rel="stylesheet" href="animate.css"> <!-- Enlace a la biblioteca de animaciones -->
+    <link rel="stylesheet" href="gsap.css"> <!-- Enlace a la biblioteca GSAP CSS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script> <!-- Enlace a la biblioteca GSAP JavaScript -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;1,100;1,200&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos generales */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #e7f0f4;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Estilo para el encabezado */
+        header {
+            background-color: #1a75ff;
+            color: #fff;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Estilo para los botones en el encabezado */
+        .header-navigation ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .header-navigation li {
+            margin-right: 20px;
+        }
+
+        .header-navigation .btn-secondary {
+            background-color: #ff8c1a;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .header-navigation .btn-secondary:hover {
+            background-color: #ff6b00;
+        }
+
+        /* Estilo para la sección principal */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(rgba(26, 117, 255, 0.7), rgba(23, 107, 228, 0.7)), url('background.jpg');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .main-content h1 {
+            font-size: 48px;
+            margin: 0;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: bounceIn 2s ease, floatIn 2s ease 0.5s;
+        }
+
+        .main-content p {
+            font-size: 18px;
+            margin: 20px 0;
+            color: #fff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            animation: bounceIn 2s ease 0.5s, floatIn 2s ease 1s;
+        }
+
+        /* Estilos para las tarjetas animadas */
+        .tools-container {
+            display: flex;
+            justify-content: center;
+            margin: 50px 0;
+        }
+
+        .tool-card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin: 10px;
+            width: 250px;
+            animation: fadeIn 1s ease;
+        }
+
+        .tool-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .tool-card h2 {
+            margin: 0;
+            font-size: 24px;
+            color: #1a75ff;
+        }
+
+        .tool-card p {
+            color: #555;
+        }
+
+        /* Animaciones */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounceIn {
+            0%, 20%, 40%, 60%, 80%, to {
+                transform: translateY(0);
+            }
+            20%, 40%, 60%, 80% {
+                transform: translateY(-30px);
+            }
+            40%, 60%, 80% {
+                transform: translateY(-15px);
+            }
+            60%, 80% {
+                transform: translateY(-7.5px);
+            }
+        }
+
+        @keyframes floatIn {
+            from {
+                transform: translateY(40px);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado de la página -->
+    <header>
+        <nav>
+            <ul class="header-navigation">
+                <li><a href="iniciar_sesion.html" class="btn-secondary">Iniciar Sesión</a></li>
+                <li><a href="registro.html" class="btn-secondary">Registrarse</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+        <h1 class="animated custom-animation">Healthy</h1>
+        <p class="animated fadeIn delay-1s">Tu herramienta completa para la gestión de historiales médicos y seguimiento de la salud.</p>
+    </main>
+
+    <!-- Sección: Herramientas y Ayuda -->
+    <section class="tools-container">
+        <div class="tool-card">
+            <h2 class="animated fadeIn delay-2s">Historial Médico</h2>
+            <p class="animated fadeIn delay-2s">Gestiona los historiales médicos de tus pacientes de manera segura y eficiente. Registra diagnósticos, tratamientos y seguimiento de la salud de tus pacientes.</p>
+        </div>
+        <div class="tool-card">
+            <h2 class="animated fadeIn delay-3s">Gráficos de Salud</h2>
+            <p class="animated fadeIn delay-3s">Visualiza el progreso de tus pacientes a través de gráficos detallados. Comprende mejor su evolución y toma decisiones informadas.</p>
+        </div>
+        <div class="tool-card">
+            <h2 class="animated fadeIn delay-4s">Informes y Análisis</h2>
+            <p class="animated fadeIn delay-4s">Genera informes detallados sobre la salud de tus pacientes. Realiza análisis en profundidad para ofrecer un cuidado médico de calidad.</p>
+        </div>
+        <div class="tool-card">
+            <h2 class="animated fadeIn delay-5s">Notificaciones</h2>
+            <p class="animated fadeIn delay-5s">Mantente al tanto de las citas médicas, recordatorios de medicamentos y otros eventos importantes en la salud de tus pacientes.</p>
+        </div>
+    </section>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2023 HealthApp - Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="scripts.js"></script> <!-- Enlace al archivo JavaScript personalizado -->
+</body>
+</html>

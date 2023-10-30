@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráficos de Salud - HealthApp</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Enlace a tu archivo CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Enlace a Chart.js -->
+    <link rel="stylesheet" href="styles.css"> <!-- Enlace a tu archivo CSS -->
+    <link rel="stylesheet" href="animate.css"> <!-- Enlace a la biblioteca de animaciones -->
+    <link rel="stylesheet" href="gsap.css"> <!-- Enlace a la biblioteca GSAP CSS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script> <!-- Enlace a la biblioteca GSAP JavaScript -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;1,100;1,200&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos específicos para esta sección */
+        .main-content {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .grafico {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .search-bar input[type="text"] {
+            padding: 10px;
+            border: 2px solid #3498db;
+            border-radius: 5px;
+            font-size: 16px;
+            font-family: 'Poppins', sans-serif; /* Fuente */
+            margin-right: 10px;
+        }
+
+        .search-bar button {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-weight: bold;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif; /* Fuente */
+        }
+
+        .search-bar button:hover {
+            background-color: #2e86de;
+        }
+        footer {
+            background-color: #3498db;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado de la página -->
+    <header>
+        <nav>
+            <ul class="main-navigation header-navigation">
+                <li><a href="index_principal.html">Inicio</a></li>
+                <li><a href="historial_medico.html">Historial Médico</a></li>
+                <li><a href="graficos-salud.html">Gráficos de Salud</a></li>
+                <li><a href="informes.html">Informes</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li class="search-bar">
+                    <input type="text" placeholder="Buscar por DNI" id="search-input">
+                    <button id="search-button">Buscar</button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <!-- Contenido principal -->
+    <main class="main-content">
+        <!-- Contenido de la sección de Gráficos de Salud -->
+        <h1 class="animated custom-animation">Gráficos de Salud</h1>
+        <p class="animated fadeIn delay-1s">Visualiza datos históricos clínicos de tus pacientes.</p>
+        <div class="search-bar">
+            <input type="text" placeholder="Buscar por paciente" id="search-patient-input">
+            <button id="search-patient-button">Buscar</button>
+        </div>
+        <div class="grafico">
+            <canvas id="chart"></canvas>
+        </div>
+    </main>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2023 Healthy
+
+    <script src="scripts.js"></script> <!-- Enlace al archivo JavaScript personalizado -->
+
+    <script>
+        // Datos de ejemplo para el gráfico
+        var data = {
+            labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio'],
+            datasets: [{
+                label: 'Presión Arterial',
+                data: [120, 130, 125, 140, 135, 145],
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 2,
+                fill: false
+            }]
+        };
+
+        var ctx = document.getElementById('chart').getContext('2d');
+        var chart = new Chart(ctx, {
+            type: 'line',
+            data: data,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+
+        // Código para buscar por paciente
+        var searchButton = document.getElementById('search-patient-button');
+        var searchInput = document.getElementById('search-patient-input');
+
+        searchButton.addEventListener('click', function () {
+            // Aquí puedes agregar lógica para buscar y mostrar gráficos específicos del paciente
+        });
+    </script>
+</body>
+</html>
